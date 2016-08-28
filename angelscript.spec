@@ -19,6 +19,8 @@ Group:		System/Libraries
 URL:		http://www.angelcode.com/angelscript/
 Source0:	http://www.angelcode.com/%{name}/sdk/files/%{name}_%{version}.zip
 
+BuildRequires:	cmake
+
 %description
 The AngelCode Scripting Library, or AngelScript as it is also known, is an
 extremely flexible cross-platform scripting library designed to allow
@@ -63,7 +65,9 @@ Headers and development files for %{name}.
 
 %build
 pushd angelscript/projects/cmake/
-%cmake
+%cmake \
+	-DBUILD_SHARED_LIBS:BOOL=ON \
+	-DBUILD_STATIC_LIBS:BOOL=OFF
 %make
 popd
 
