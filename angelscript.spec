@@ -78,7 +78,7 @@ install -pm 0644 %{name}/lib/lib%{name}.so.%{major}.%{minor}.%{micro} %{buildroo
 pushd %{buildroot}%{_libdir}/
  	ln -s lib%{name}.so.%{major}.%{minor}.%{micro} lib%{name}.so
 	ln -s lib%{name}.so.%{major}.%{minor}.%{micro} lib%{name}.so.%{major}
-	ln -s lib%{name}.so.%{major}.%{minor}.%{micro} lib%{name}.so.%{major}.%{micro}
+	ln -s lib%{name}.so.%{major}.%{minor}.%{micro} lib%{name}.so.%{major}.%{minor}
 popd
 
 # header file
