@@ -5,11 +5,6 @@
 %define libname %mklibname %{name} %{version}
 %define devname %mklibname %{name} -d
 
-#
-# FIXME: a better soversion may be '0' (see angelscript/projects/meson/meson.build)
-# FIXME: install samples and tutorial
-#
-
 Summary:	A library that allow applications to extend through external scripts
 Name:		angelscript
 Version:	%{major}.%{minor}.%{micro}
@@ -56,12 +51,17 @@ Headers and development files for %{name}.
 %files -n %{devname}
 %{_includedir}/%{name}.h
 %{_libdir}/lib%{name}.so
+%doc samples/
 %doc docs/
 
 #----------------------------------------------------------------------------
 
 %prep
 %setup -q -n sdk
+
+# remove unuseful stuffs
+find samples -name msvc\* -type d -exec rm -fr '{}' \+
+find samples -name delete.me -delete
 
 %build
 pushd angelscript/projects/cmake/
